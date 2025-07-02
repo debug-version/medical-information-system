@@ -6,31 +6,11 @@
 class TextString : public StringBase
 {
   public:
-    explicit TextString(const std::string &value)
-        : StringBase(value, 1, 128)
-    {
-        validateText(value_);
-    }
+    explicit TextString(const std::string &value);
 
   protected:
-    TextString(const std::string &value, int minLen, int maxLen)
-        : StringBase(value, minLen, maxLen)
-    {
-        validateText(value_);
-    }
+    TextString(const std::string &value, int minLen, int maxLen);
 
   private:
-    static void validateText(const std::string &value)
-    {
-        if (!SpaceValidator::noDoubleSpace(value)) {
-            throw std::invalid_argument(
-                "TextString must not contain consecutive spaces"
-            );
-        }
-        if (!SpaceValidator::noSpaceStartEnd(value)) {
-            throw std::invalid_argument(
-                "TextString must not start or end with a space"
-            );
-        }
-    }
+    static void validateText(const std::string &value);
 };
