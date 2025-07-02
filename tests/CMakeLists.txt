@@ -6,10 +6,12 @@ add_executable(
     ${CMAKE_CURRENT_SOURCE_DIR}/entities/person_test.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/validators/length_validator_test.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/value_objects/date_test.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/value_objects/oms_policy_number_test.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/value_objects/phone_number_test.cpp
     ${CMAKE_SOURCE_DIR}/src/domain/entities/person.cpp
     ${CMAKE_SOURCE_DIR}/src/domain/value_objects/date.cpp
     ${CMAKE_SOURCE_DIR}/src/domain/value_objects/id.cpp
+    ${CMAKE_SOURCE_DIR}/src/domain/value_objects/oms_policy_number.cpp
     ${CMAKE_SOURCE_DIR}/src/domain/value_objects/phone_number.cpp
     ${CMAKE_SOURCE_DIR}/src/domain/value_objects/text_string.cpp
     ${CMAKE_SOURCE_DIR}/src/domain/value_objects/word_string.cpp
