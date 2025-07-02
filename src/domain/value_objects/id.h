@@ -1,57 +1,26 @@
 #pragma once
 
+#include "value_object.h"
+#include <cstdint>
 #include <stdexcept>
 
-class Id
+class Id : public ValueObject<Id>
 {
   public:
-    explicit Id(int64_t value)
-    {
-        if (value <= 0) {
-            throw std::invalid_argument("ID must be greater than 0");
-        }
-        value_ = value;
-    }
+    explicit Id(int64_t value);
 
-    int64_t value() const
-    {
-        return value_;
-    }
+    int64_t value() const;
 
-    operator int64_t() const
-    {
-        return value_;
-    }
+    operator int64_t() const;
 
-    bool operator==(const Id &other) const
-    {
-        return value_ == other.value_;
-    }
+    bool operator<(const Id &other) const;
+    bool operator>(const Id &other) const;
+    bool operator<=(const Id &other) const;
+    bool operator>=(const Id &other) const;
 
-    bool operator!=(const Id &other) const
-    {
-        return !(*this == other);
-    }
-
-    bool operator<(const Id &other) const
-    {
-        return value_ < other.value_;
-    }
-
-    bool operator>(const Id &other) const
-    {
-        return value_ > other.value_;
-    }
-
-    bool operator<=(const Id &other) const
-    {
-        return value_ <= other.value_;
-    }
-
-    bool operator>=(const Id &other) const
-    {
-        return value_ >= other.value_;
-    }
+  protected:
+    bool equalsCore(const Id &other) const override;
+    std::size_t getHashCodeCore() const override;
 
   private:
     int64_t value_;
