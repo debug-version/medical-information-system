@@ -1,17 +1,26 @@
 #pragma once
 
+#include "length_validator.h"
 #include "space_validator.h"
-#include "string_base.h"
+#include "value_object.h"
 #include <stdexcept>
 #include <string>
 
-class WordString : public StringBase
+class WordString : public ValueObject<WordString>
 {
   public:
+    WordString(const std::string &value, int minLen, int maxLen);
     explicit WordString(const std::string &value);
 
-    WordString(const std::string &value, int minLen, int maxLen);
+    const std::string &toString() const;
+
+  protected:
+    bool equalsCore(const WordString &other) const override;
+    std::size_t getHashCodeCore() const override;
 
   private:
-    static void validateWord(const std::string &value);
+    void validateWord(const std::string &value) const;
+
+    std::string value_;
+    LengthValidator lengthValidator_;
 };
