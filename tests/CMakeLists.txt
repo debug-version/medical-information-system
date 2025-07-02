@@ -5,6 +5,7 @@ add_executable(
     ${CMAKE_CURRENT_SOURCE_DIR}/test_main.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/entities/person_test.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/validators/length_validator_test.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/value_objects/date_test.cpp
     ${CMAKE_SOURCE_DIR}/src/domain/entities/person.cpp
     ${CMAKE_SOURCE_DIR}/src/shared_kernel/entity.cpp
     ${CMAKE_SOURCE_DIR}/src/utils/validators/length_validator.cpp
