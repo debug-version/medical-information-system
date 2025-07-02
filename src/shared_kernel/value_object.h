@@ -8,30 +8,10 @@ template <typename T> class ValueObject
   public:
     virtual ~ValueObject() = default;
 
-    bool operator==(const T &other) const
-    {
-        return equalsCore(other);
-    }
-
-    bool operator!=(const T &other) const
-    {
-        return !(*this == other);
-    }
-
-    // For pointer-based comparison through ValueObject<T>*
-    bool operator==(const ValueObject<T> &other) const
-    {
-        // RTTI check in case comparing through the base type
-        auto ptr = dynamic_cast<const T *>(&other);
-        if (ptr == nullptr)
-            return false;
-        return equalsCore(*ptr);
-    }
-
-    bool operator!=(const ValueObject<T> &other) const
-    {
-        return !(*this == other);
-    }
+    bool operator==(const T &other) const;
+    bool operator!=(const T &other) const;
+    bool operator==(const ValueObject<T> &other) const;
+    bool operator!=(const ValueObject<T> &other) const;
 
   protected:
     // Implement in derived classes for value comparison
@@ -40,8 +20,7 @@ template <typename T> class ValueObject
     virtual std::size_t getHashCodeCore() const = 0;
 
   public:
-    std::size_t hash() const
-    {
-        return getHashCodeCore();
-    }
+    std::size_t hash() const;
 };
+
+#include "value_object.tpp"
